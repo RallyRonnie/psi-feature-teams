@@ -1,6 +1,8 @@
 // global
 var myMask = null;
 var app = null;
+// Change to the lowest level PI (Rally default is Feature)
+var PIModel = "PortfolioItem/Feature";
 
 // app
 Ext.define('CustomApp', {
@@ -179,7 +181,7 @@ Ext.define('CustomApp', {
         console.log("fetch",fetch);
         
         var config = { 
-            model  : "PortfolioItem/Feature",
+            model  : PIModel,
             fetch  : fetch,
             filters: [filter],
             sorters: [{ property: 'Rank', direction: 'ASC'}]

@@ -145,7 +145,7 @@ Ext.define('Ext.ux.CheckCombo',
 
             Ext.each(vals, function(val)
             {
-                var record = me.store.getById(parseInt(val));
+                var record = me.store.getById(parseInt(val,10));
                 if(record) records.push(record);
             });
 
@@ -250,7 +250,7 @@ Ext.define('Ext.ux.CheckCombo',
         if(me.addAllSelector === true)
         {
             var height = picker.getHeight();
-            height = parseInt(height)+20;
+            height = parseInt(height,10)+20;
             picker.setHeight(height);
             picker.getEl().setStyle('height', height+'px');
         }

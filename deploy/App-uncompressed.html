@@ -11,6 +11,8 @@
                 // global
 var myMask = null;
 var app = null;
+// Change to the lowest level PI (Rally default is Feature)
+var PIModel = "PortfolioItem/Feature";
 
 // app
 Ext.define('CustomApp', {
@@ -65,7 +67,7 @@ Ext.define('CustomApp', {
     wsapiQuery : function( config , callback ) {
         Ext.create('Rally.data.WsapiDataStore', {
             autoLoad : true,
-            limit : "infinity",
+            limit : "Infinity",
             model : config.model,
             fetch : config.fetch,
             filters : config.filters,
@@ -189,7 +191,7 @@ Ext.define('CustomApp', {
         console.log("fetch",fetch);
         
         var config = { 
-            model  : "PortfolioItem/Feature",
+            model  : PIModel,
             fetch  : fetch,
             filters: [filter],
             sorters: [{ property: 'Rank', direction: 'ASC'}]
@@ -702,7 +704,7 @@ function getReleaseTimeBox(app) {
 
             Ext.each(vals, function(val)
             {
-                var record = me.store.getById(parseInt(val));
+                var record = me.store.getById(parseInt(val,10));
                 if(record) records.push(record);
             });
 
@@ -807,7 +809,7 @@ function getReleaseTimeBox(app) {
         if(me.addAllSelector === true)
         {
             var height = picker.getHeight();
-            height = parseInt(height)+20;
+            height = parseInt(height,10)+20;
             picker.setHeight(height);
             picker.getEl().setStyle('height', height+'px');
         }
